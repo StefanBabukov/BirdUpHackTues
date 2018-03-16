@@ -1,0 +1,4 @@
+TuesGameController.MainActivity, TuesGameController;md5b90ae32da3ab0205180f314a24346423.MainActivity
+TuesGameController.MainActivity, TuesGameController, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5b90ae32da3ab0205180f314a24346423.MainActivity
+TuesGameController.MainActivity;md5b90ae32da3ab0205180f314a24346423.MainActivity
+tuesgamecontroller.MainActivity;md5b90ae32da3ab0205180f314a24346423.MainActivity
