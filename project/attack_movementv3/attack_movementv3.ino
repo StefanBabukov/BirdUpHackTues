@@ -6,7 +6,8 @@ int button_move_R = 7;
 int button_move_L = 9;
 int button_attack = 5;
 int i = 0;
-int lastmovement=1;// -1 left, 1 right
+int lastmovement;// -1 left, 1 right
+int direct;
 CRGB leds[NUM_LEDS];
 
 //unsigned long previousmillis = 0;
@@ -92,6 +93,10 @@ void loop() {
     leds[i] = CRGB(0, 255, 0);
     FastLED.show();
     i++;
+    if(i > lastmovement) {
+      direct = 1;
+    }
+    lastmovement=i;
     delay(100);
     }
    
@@ -106,14 +111,22 @@ void loop() {
     leds[i] = CRGB(0, 0, 0);
    }
     leds[i-1] = CRGB(0, 255, 0);
-    FastLED.show();
     i--;
-    lastmovement=-1;
+    if(i < lastmovement) {
+      direct = 0;
+    }
+    lastmovement=i;
+    FastLED.show();
     delay(100);
     }
     if(digitalRead(button_attack)==HIGH){
     Serial.println("attack is pressed");
-     attack(i-1);
+    if(direct == 1) {
+      attack(i-1);
+    }
+    if(direct == 0) {
+      attack(i);
+    }
    }
    
    }
