@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuesGameController", "TuesGameController\TuesGameController.csproj", "{3D1DEE09-E70E-4387-8E9A-E7F2F90067F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D1DEE09-E70E-4387-8E9A-E7F2F90067F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1DEE09-E70E-4387-8E9A-E7F2F90067F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1DEE09-E70E-4387-8E9A-E7F2F90067F8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3D1DEE09-E70E-4387-8E9A-E7F2F90067F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1DEE09-E70E-4387-8E9A-E7F2F90067F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D1DEE09-E70E-4387-8E9A-E7F2F90067F8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {211E9008-3C57-4734-ADD6-43D0DB71DAB4}
+	EndGlobalSection
+EndGlobal
