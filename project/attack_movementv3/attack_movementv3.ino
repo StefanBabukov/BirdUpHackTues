@@ -23,17 +23,25 @@ pinMode(button_move_L, INPUT);
 }
 int attack(int x){
   Serial.print("ATTACK");
-  leds[x+1]=CRGB(255,255,0);
-  leds[x-1]=CRGB(255,255,0);
+  leds[x-2]=CRGB(174,200,238);
+  leds[x+2]=CRGB(174,200,238);
+  leds[x+1]=CRGB(174,200,238);
+  leds[x-1]=CRGB(174,200,238);
   FastLED.show();
-  if(leds[x+1]==CRGB(255,0,0)||leds[x-1]==CRGB(255,0,0)){//
+  if(leds[x+1]==CRGB(255,0,0)||leds[x-1]==CRGB(255,0,0)||leds[x-2]==CRGB(255,0,0)||leds[x+2]==CRGB(255,0,0)){//
     leds[x+1]=CRGB(0,0,0);                   //
-    leds[x-1]=CRGB(0,0,0);                   // CHECKS FOR AN ENEMY AND 
-    leds[x-1]=CRGB(255,255,0);              //  REMOVES IT.
-    leds[x+1]=CRGB(255,255,0);   
+    leds[x-1]=CRGB(0,0,0);
+    leds[x-2]=CRGB(0,0,0);
+    leds[x+2]=CRGB(0,0,0);
+    leds[x-1]==CRGB(174,200,238);
+    leds[x-1]==CRGB(174,200,238);      // CHECKS FOR AN ENEMY AND 
+    leds[x-1]=CRGB(174,200,238);              //  REMOVES IT.
+    leds[x+1]=CRGB(174,200,238);   
     FastLED.show();
   }
-  delay(300);
+  //delay(300);
+  leds[x+2]=CRGB(0,0,0);
+  leds[x-2]=CRGB(0,0,0);
   leds[x+1]=CRGB(0,0,0);
   leds[x-1]=CRGB(0,0,0);
   FastLED.show();
@@ -52,37 +60,57 @@ int endGame(int red,int green, int blue){
         //i++;
         }
 }
-int Enemies=0;
+int numEnemies=0;
+int maxEnemies=6;
 int j;
 int startTime;
 int SpawnLocation;
 int mobLocations;
-CRGB mob[NUM_LEDS];
+int steps=0;
+int razmqna;
+int mob[6];
 int spawnMob(int x){
-  if(Enemies<6&&millis()>Enemies*4000){
+  if(numEnemies<maxEnemies&&millis()>numEnemies*random(2000,6000)){
     Serial.print("Spawn!");
-    SpawnLocation=random(x+15,80);
-    Serial.print(SpawnLocation);
-    Enemies++;
-    if(SpawnLocation==mobLocations){
-      SpawnLocation=random(x+15,80);
-    }
-    leds[SpawnLocation]=CRGB(255,0,0);
+    leds[79]=CRGB(255,0,0);
     FastLED.show();
-    mobLocations=SpawnLocation;
+    mob[numEnemies]=79;
+    numEnemies++;
   }
-  
-}
+  if(millis()>steps*1000){
+    for(j=0;j<numEnemies;j++){
+        leds[mob[j]]=CRGB(0,0,0);
+        
+        if(leds[mob[j]-1]==CRGB(0,255,0)){
+          endGame(255,0,0);
+        }
+        if(leds[mob[j]-1]==CRGB(255,255,255)){    //CHECK IF THE PLAYER IS SHOOTING.
+          
+          Serial.println("YOU ARE HITTING ME");
+          leds[mob[j]-1]==CRGB(0,0,0);
+          leds[mob[j]-1];
+        }
+        else{
+        leds[mob[j]-1]=CRGB(255,0,0);
+        }
+        FastLED.show();
+        mob[j]--;
+    }
+    steps++;
+  }
+  }
+
 void loop() {
-  
   Serial.println(startTime);
  // startTime = millis();
    while(i<80) {
-   while(digitalRead(button_move_R)== LOW && digitalRead(button_move_L)  == LOW&&digitalRead(button_attack)==LOW){
+   while(digitalRead(button_move_R)== LOW && digitalRead(button_move_L)  == LOW&&digitalRead(button_attack)==LOW){   
         spawnMob(i-1);
    }
-        spawnMob(i-1);
+         spawnMob(i-1);
+
   if(digitalRead(button_move_R)==HIGH){
+    Serial.println("move right");
      if(leds[i]==CRGB(255,0,0)){
         endGame(255,0,0);
         i=0;
@@ -102,10 +130,9 @@ void loop() {
    
 
    else if (digitalRead(button_move_L)==HIGH){
+    Serial.println("move left");
    if(i == 0){   
-   //if(digitalRead(button_move_L)==HIGH){
     i =  1;
-  // }
    }
    if(leds[i]==CRGB(0,255,0)){
     leds[i] = CRGB(0, 0, 0);
