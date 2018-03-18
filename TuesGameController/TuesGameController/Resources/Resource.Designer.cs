@@ -47,8 +47,20 @@ namespace TuesGameController
 			// aapt resource value: 0x7f040000
 			public const int Button1 = 2130968576;
 			
+			// aapt resource value: 0x7f040003
+			public const int ButtonA = 2130968579;
+			
 			// aapt resource value: 0x7f040001
-			public const int textView1 = 2130968577;
+			public const int ButtonL = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int ButtonR = 2130968578;
+			
+			// aapt resource value: 0x7f040005
+			public const int buttonTU = 2130968581;
+			
+			// aapt resource value: 0x7f040004
+			public const int textView1 = 2130968580;
 			
 			static Id()
 			{
@@ -65,6 +77,9 @@ namespace TuesGameController
 			
 			// aapt resource value: 0x7f020000
 			public const int Main = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Prologue = 2130837505;
 			
 			static Layout()
 			{

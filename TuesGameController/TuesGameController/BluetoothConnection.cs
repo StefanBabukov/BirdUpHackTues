@@ -53,5 +53,10 @@ namespace TuesGameController
             //TO DO
         }
 
+        public void ButtonMove(byte number)
+        {
+            this.MobSocket.OutputStream.WriteByte(number);
+        }
+
     }
 }

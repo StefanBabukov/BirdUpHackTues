@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:gravity="center">
+    <TextView
+        android:gravity="center"
+        android:text="Lorem ipsumLoremipsumLoremipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLoremLorem ipsumLoremipsumLoremipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLoremLorem ipsumLoremipsumLoremipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLoremLorem ipsumLoremipsumLoremipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLoremLorem ipsumLoremipsumLoremipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+    <Button
+        android:text="Save TUES!"
+        android:layout_width="145.0dp"
+        android:layout_height="78.0dp"
+        android:id="@+id/buttonTU"
+        android:layout_margin="0.0dp" />
+</LinearLayout>
