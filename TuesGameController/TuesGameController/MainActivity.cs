@@ -11,6 +11,7 @@ namespace TuesGameController
     ScreenOrientation = ScreenOrientation.Landscape)]
     public class MainActivity : Activity
     {
+        public bool received;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -19,6 +20,8 @@ namespace TuesGameController
             SetContentView(Resource.Layout.Main);
 
             BluetoothConnection newConnection = new BluetoothConnection();
+            System.Threading.Thread listen = new System.Threading.Thread(newConnection.Listen);
+
 
             var buttonConnect = FindViewById<Button>(Resource.Id.Button1);
             var buttonRight = FindViewById<Button>(Resource.Id.ButtonR);
@@ -42,7 +45,11 @@ namespace TuesGameController
             };
             buttonAttack.Click += (s, ea) =>
             {
-                newConnection.ButtonMove(3);
+                received = newConnection.ButtonMove(3);
+                if(received)
+                {
+                    Toast.MakeText(this, "You met Stela", ToastLength.Short).Show();
+                }
             };
         }
     }

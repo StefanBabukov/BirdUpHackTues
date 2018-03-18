@@ -20,7 +20,7 @@ namespace TuesGameController
         public BluetoothConnection()
         {
             this.MobAdapter = BluetoothAdapter.DefaultAdapter; //Take the adapter
-            if(this.MobAdapter == null)
+            if (this.MobAdapter == null)
             {
                 return;
             }
@@ -28,7 +28,7 @@ namespace TuesGameController
             {
                 this.ArDevice = (from bondedDevice in this.MobAdapter.BondedDevices where bondedDevice.Name == "HC-05\n\n" select bondedDevice).FirstOrDefault();
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 throw new NullReferenceException("Sequence returned null!");
             }
@@ -38,6 +38,7 @@ namespace TuesGameController
         private BluetoothDevice ArDevice; //The remote bluetooth device.
         private BluetoothAdapter MobAdapter; //Local device
         private BluetoothSocket MobSocket; //Serial Port Profile for streaming transport over Bluetooth.
+        private bool isReceived = false;
 
         public void Connect()
         {
@@ -53,9 +54,23 @@ namespace TuesGameController
             //TO DO
         }
 
-        public void ButtonMove(byte number)
+        public void Listen()
+        {
+            while (true)
+            {
+                if (MobSocket.InputStream.ReadByte() == 7)
+                {
+                    isReceived = true;
+                }
+                MobSocket.InputStream.Close();
+            }
+        }
+
+        public bool ButtonMove(byte number)
         {
             this.MobSocket.OutputStream.WriteByte(number);
+            this.MobSocket.OutputStream.Close();
+            return isReceived;
         }
 
     }
