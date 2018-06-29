@@ -4,35 +4,41 @@
     android:layout_marginTop="90.0dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/linear"
     android:minWidth="25px"
     android:minHeight="25px">
-    <Button
-        android:text="Connect!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Button1"
-        android:layout_marginRight="0.0dp" />
     <Button
         android:text="Left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ButtonL"
-        android:layout_marginRight="0.0dp" />
+        android:layout_marginRight="0.0dp"
+        android:layout_marginLeft="95.0dp" />
     <Button
         android:text="Right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ButtonR"
         android:layout_marginRight="0.0dp" />
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:layout_marginLeft="40.0dp"
+        android:layout_marginRight="40.0dp" />
     <Button
         android:text="Attack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ButtonA"
-        android:layout_marginRight="0.0dp" />
-    <TextView
-        android:text="Not connected!"
-        android:layout_width="match_parent"
+        android:layout_marginRight="0.0dp"
+        android:layout_marginLeft="0dp" />
+    <Button
+        android:text="Switch"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:id="@+id/Button1"
+        android:layout_marginRight="0.0dp"
+        android:layout_marginBottom="0.0dp" />
 </LinearLayout>

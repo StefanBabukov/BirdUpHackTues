@@ -11,7 +11,6 @@ namespace TuesGameController
     ScreenOrientation = ScreenOrientation.Landscape)]
     public class MainActivity : Activity
     {
-        public bool received;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -19,38 +18,61 @@ namespace TuesGameController
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            BluetoothConnection newConnection = new BluetoothConnection();
-            System.Threading.Thread listen = new System.Threading.Thread(newConnection.Listen);
-
-
-            var buttonConnect = FindViewById<Button>(Resource.Id.Button1);
+            var buttonSwitch = FindViewById<Button>(Resource.Id.Button1);
+            var buttonAttack = FindViewById<Button>(Resource.Id.ButtonA);
             var buttonRight = FindViewById<Button>(Resource.Id.ButtonR);
             var buttonLeft = FindViewById<Button>(Resource.Id.ButtonL);
-            var buttonAttack = FindViewById<Button>(Resource.Id.ButtonA);
-            var text = FindViewById<TextView>(Resource.Id.textView1);
-            buttonConnect.Click += (s, ea) =>
+            //var myButtonRight = new CustomButton();
+            //myButtonRight.Text = "RightM";
+            //myButtonRight.HorizontalOptions = Xamarin.Forms.LayoutOptions.FillAndExpand;
+
+            //var myButtonLeft = new CustomButton();
+            //myButtonLeft.Text = "LeftM";
+            //myButtonLeft.HorizontalOptions = Xamarin.Forms.LayoutOptions.FillAndExpand;
+            BluetoothConnection.ButtonMove(9);
+            buttonSwitch.Click += (s, ea) =>
             {
-                newConnection.Connect();
-                text.Text = "Connected!";
-                //Toast.MakeText(this, "CONNECTED", ToastLength.Long).Show();
+                BluetoothConnection.ButtonMove(6);
             };
 
-            buttonRight.Click += (s, ea) =>
-            {
-                newConnection.ButtonMove(1);
-            };
-            buttonLeft.Click += (s, ea) =>
-            {
-                newConnection.ButtonMove(2);
-            };
+            //myButtonRight.MyOnPressed += (s, ea) =>
+            //{
+            //    newConnection.ButtonMove(1);
+            //};
+            //myButtonLeft.MyOnPressed += (s, ea) =>
+            //{
+            //    newConnection.ButtonMove(2);
+            //};
             buttonAttack.Click += (s, ea) =>
             {
-                received = newConnection.ButtonMove(3);
-                if(received)
+                BluetoothConnection.ButtonMove(5);
+            };
+            buttonLeft.Touch += (s, ea) =>
+            {
+                if(ea.Event.Action == Android.Views.MotionEventActions.Down)
                 {
-                    Toast.MakeText(this, "You met Stela", ToastLength.Short).Show();
+                    BluetoothConnection.ButtonMove(1); //start
+                }
+                else if(ea.Event.Action == Android.Views.MotionEventActions.Up)
+                {
+                    BluetoothConnection.ButtonMove(2); //stop
                 }
             };
+            buttonRight.Touch += (s, ea) =>
+            {
+                if (ea.Event.Action == Android.Views.MotionEventActions.Down)
+                {
+                    BluetoothConnection.ButtonMove(3); //start
+                    //Toast.MakeText(this, "3", ToastLength.Short).Show();
+                }
+                else if (ea.Event.Action == Android.Views.MotionEventActions.Up)
+                {
+                    BluetoothConnection.ButtonMove(4); //stop
+                    //Toast.MakeText(this, "4", ToastLength.Short).Show();
+                }
+            };
+            //LinearLayout linearLayout = FindViewById<LinearLayout>(Resource.Id.linear);
+            //linearLayout.AddView(myButtonLeft);
         }
     }
 }

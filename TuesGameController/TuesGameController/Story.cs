@@ -19,9 +19,11 @@ namespace TuesGameController
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Prologue);
+            BluetoothConnection newConnection = new BluetoothConnection();
             var buttonProceed = FindViewById<Button>(Resource.Id.buttonTU);
             buttonProceed.Click += (s, ea) =>
             {
+                newConnection.Connect();
                 StartActivity(typeof(MainActivity));
             };
 
